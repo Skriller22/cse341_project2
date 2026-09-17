@@ -8,7 +8,15 @@ const { validateId } = require('../middleware/validateDB');
 
 // Init swagger
 const swaggerUi = require('swagger-ui-express');
-router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(require('../swagger-output.json')));
+const swaggerDocument = require('../swagger-output.json');
+router.use('/api-docs', (req, _res, next) => {
+    req.swaggerDoc = {
+        ...swaggerDocument,
+        host: req.get('host'),
+        schemes: [req.protocol]
+    };
+    next();
+}, swaggerUi.serveFiles(swaggerDocument), swaggerUi.setup());
 
 // County routes
 router.get('/county', /* #swagger.tags = ['County'] */ countyController.getAll);
