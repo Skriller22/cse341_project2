@@ -3,6 +3,9 @@ const cors = require("cors");
 const mongodb = require("./data/database");
 const app = express();
 
+// allow trust proxy for render.com
+app.set('trust proxy', 1);
+
 const port = process.env.PORT || 3000;
 
 app.use(cors());
