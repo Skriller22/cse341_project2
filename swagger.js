@@ -9,7 +9,7 @@ const doc = {
     {name: 'County', description: 'County CRUD operations'},
     {name: 'State', description: 'State CRUD operations'}
   ],
-  host: process.env.SWAGGER_HOST || 'localhost:3000',
+  host: process.env.SWAGGER_HOST || 'https://cse341-project2-xao6.onrender.com',
   schemes: process.env.SWAGGER_HOST ? ['https'] : ['http'],
   basePath: ''
 };
